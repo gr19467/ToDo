@@ -79,4 +79,52 @@ body {
   display: inline;
 }
 
-/* Right Area *//*# sourceMappingURL=style.css.map */
+/* Right Area */
+.rightArea {
+  width: 75%;
+  height: 100%;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-right: 40px;
+  padding-left: 40px;
+}
+
+.note {
+  width: 25%;
+  height: 75%;
+  border-radius: 20px;
+  border: 2px solid #5B7553;
+  color: #3D2C2E;
+}
+.note .noteTitle {
+  background-color: #C5DCA0;
+  border-bottom: 2px solid #5B7553;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 20px;
+  padding-left: 20px;
+  font-size: 150%;
+}
+.note .noteTitle .buttons {
+  width: 25%;
+}
+.note .noteTitle .buttons img {
+  width: 20px;
+  height: 20px;
+}
+.note .to-do {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 20px;
+  padding-left: 20px;
+  border-bottom: 1px solid #5B7553;
+}
+.note .to-do input {
+  margin-right: 5px;
+}
+.note .to-do img {
+  width: 15px;
+  height: 15px;
+}/*# sourceMappingURL=style.css.map */

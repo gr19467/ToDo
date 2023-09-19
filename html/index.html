@@ -26,8 +26,8 @@
     <div class="mainArea flex">
         <!--Left Bar-->
         <div class="leftBar" id="leftBar" contenteditable="true">
-            <div class="header flex justify-between">
-                <h1 contenteditable="false">Lists</h1>
+            <div contenteditable="false" class="header flex justify-between">
+                <h1>Lists</h1>
                 <img class="self-center" onclick="newNote()" src="/Images/add.png" alt="">
             </div>
             <!--Test Note
@@ -35,9 +35,19 @@
             Test Note-->
         </div>
         <!--Right Area-->
-        <div>
-            <div>
-                <h1>Test Note</h1>
+        <div class="rightArea">
+            <div class="note">
+                <div class="noteTitle flex justify-between">
+                    Test Note
+                    <div class="buttons flex justify-between">
+                        <img class="self-center" onclick="newToDo()" src="/Images/add.png" alt="">
+                        <img class="self-center" onclick="closeNote()" src="/Images/close.png" alt="">
+                    </div>
+                </div>
+                <div class="to-do flex justify-between">
+                    <div class="flex"><input type="checkbox">New to-do</div>
+                    <img class="self-center" onclick="deleteToDo()" src="/Images/trash.png" alt="">
+                </div>
             </div>
         </div>
     </div>

@@ -6,6 +6,8 @@ $darkGreen: #5B7553;
 $teal: #36827F;
 $brown: #3D2C2E;
 $lighterBrown: #533c3f;
+$smallBorder: 1px solid $darkGreen;
+$largeBorder: 2px solid $darkGreen;
 
 @mixin padding($top, $bottom, $right, $left){
     padding-top: $top;
@@ -64,7 +66,7 @@ body{
 
     .header{
         background-color: $lightGreen;
-        border-bottom: 2px solid $darkGreen;
+        border-bottom: $largeBorder;
 
         font-size: 200%;
 
@@ -84,7 +86,7 @@ body{
         color: $brown;
         font-size: 125%;
 
-        border-bottom: 1px solid $darkGreen;
+        border-bottom: $smallBorder;
 
         img{
             display: none;
@@ -101,3 +103,54 @@ body{
         }
 
 /* Right Area */
+    .rightArea{
+        width: 75%;
+        height: 100%;
+
+        @include padding(40px, 40px, 40px, 40px);
+    }
+
+    .note{
+        width: 25%;
+        height: 75%;
+
+        border-radius: 20px;
+        border: $largeBorder;
+
+        color: $brown;
+
+        .noteTitle{
+            background-color: $lightGreen;
+
+            border-bottom: $largeBorder;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+
+            @include padding(5px, 5px, 20px, 20px);
+
+            font-size: 150%;
+
+            .buttons{
+                width: 25%;
+
+                img{
+                    @include images(20px, 20px);
+                }
+            }
+
+            
+        }
+
+        .to-do{
+            @include padding(5px, 5px, 20px, 20px);
+            border-bottom: $smallBorder;
+
+            input{
+                margin-right: 5px;
+            }
+
+            img{
+                @include images(15px, 15px);
+            }
+        }
+    }
