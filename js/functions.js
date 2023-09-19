@@ -3,7 +3,7 @@
     /*creates a new noteTab*/
     var i = 0;
 
-    function newNote(){
+    function newNoteTab(){
         /*increment i*/
         i++;
 
@@ -31,42 +31,74 @@
         document.getElementById("leftBar").appendChild(node);
     }
 
+    /*creates a new note*/
+    function newNote(){
+        /*create the new div*/
+        const node = document.createElement("div");
+        
+        /*create the note title*/
+        const textnode = document.createTextNode("New Note");
+        
+        /*create the trash image and add its classes/attributes*/
+        const trash = document.createElement("img");
+        trash.setAttribute("src", "/images/trash.png");
+        trash.setAttribute("onclick", "deleteNote(" + i + ")")
+        trash.classList.add("self-center");
+                
+        /*add the title and image*/
+        node.appendChild(textnode);
+        node.appendChild(trash);
+        
+        /*add the note's classes/attributes*/
+        node.classList.add("noteTab", "flex", "justify-between")
+        node.setAttribute("id", "noteTab" + i);
+                
+        /*add the div to the left bar*/
+        document.getElementById("leftBar").appendChild(node);
+    }
+
     /*creates a new toDo*/
     var j = 0;
 
     function newToDo(num){
-                /*increment k*/
-                k++;
+        /*increment j*/
+        j++;
 
-                /*create the new to-do div*/
-                const node = document.createElement("div");
+        /*create the new to-do div*/
+        const node = document.createElement("div");
 
-                /*create the first new div: checkbox & title*/
-                const titleDiv = document.createElement("div");
+        /*create the first new div: checkbox & title*/
+        const titleDiv = document.createElement("div");
 
-                /*create the checkbox*/
+        /*create the checkbox*/
+        const check = document.createElement("input");
+
+        /*add the checkbox's attributes*/
+        check.setAttribute("type", "checkbox");
         
-                /*create the to-do title*/
-                const textnode = document.createTextNode("New to-do");
+        /*create the to-do title*/
+        const textnode = document.createTextNode("New to-do");
 
-                /*add them to the div*/
+        /*add them to the div*/
+        titleDiv.appendChild(textNode);
+        titleDiv.appendChild(check);
         
-                /*create the trash image and add its classes/attributes*/
-                const trash = document.createElement("img");
-                trash.setAttribute("src", "/images/trash.png");
-                trash.setAttribute("onclick", "deleteToDo(" + k + ")")
-                trash.classList.add("self-center");
+        /*create the trash image and add its classes/attributes*/
+        const trash = document.createElement("img");
+        trash.setAttribute("src", "/images/trash.png");
+        trash.setAttribute("onclick", "deleteToDo(" + j + ")")
+        trash.classList.add("self-center");
                 
-                /*add the title div & trash*/
-                node.appendChild(titleDiv);
-                node.appendChild(trash);
+        /*add the title div & trash*/
+        node.appendChild(titleDiv);
+        node.appendChild(trash);
         
-                /*add the to-do's classes/attributes*/
-                node.classList.add("to-do", "flex", "justify-between")
-                node.setAttribute("id", "toDo" + k);
+        /*add the to-do's classes/attributes*/
+        node.classList.add("to-do", "flex", "justify-between")
+        node.setAttribute("id", "toDo" + j);
                 
-                /*add the div to the note*/
-                document.getElementById("note" + num).appendChild(node);
+        /*add the div to the note*/
+        document.getElementById("note" + num).appendChild(node);
     }
 
 /*Delete/Close*/
