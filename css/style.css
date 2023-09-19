@@ -125,6 +125,13 @@ body {
   margin-right: 5px;
 }
 .note .to-do img {
+  display: none;
   width: 15px;
   height: 15px;
+}
+.note .to-do:hover {
+  background-color: rgba(197, 220, 160, 0.2509803922);
+}
+.note .to-do:hover img {
+  display: inline;
 }/*# sourceMappingURL=style.css.map */

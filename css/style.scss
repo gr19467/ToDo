@@ -150,7 +150,16 @@ body{
             }
 
             img{
+                display: none;
                 @include images(15px, 15px);
             }
         }
+
+            .to-do:hover{
+                background-color: $lightestGreen;
+
+                img{
+                    display: inline;
+                }
+            }
     }
