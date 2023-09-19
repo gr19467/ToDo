@@ -1,0 +1,103 @@
+$white: #FFFFFF;
+$lightGreen: #C5DCA0;
+$lighterGreen: #c5dca080;
+$lightestGreen: #c5dca040;
+$darkGreen: #5B7553;
+$teal: #36827F;
+$brown: #3D2C2E;
+$lighterBrown: #533c3f;
+
+@mixin padding($top, $bottom, $right, $left){
+    padding-top: $top;
+    padding-bottom: $bottom;
+    padding-right: $right;
+    padding-left: $left;
+}
+
+@mixin images($width, $height){
+    width: $width;
+    height: $height;
+}
+
+body{
+    margin: 0 auto;
+
+    width: 100%;
+    height: 100%;
+
+    font-family: 'Quicksand', sans-serif;
+}
+
+.nav{
+    background-color: $darkGreen;
+
+    color: $white;
+    font-size: 250%;
+    font-weight: bold;
+
+    width: 100%;
+    height: fit-content;
+
+    @include padding(5px, 5px, 40px, 40px);
+
+    .images{
+
+        img{@include images(30px, 30px);}
+
+        width: 10%;
+    }
+}
+
+/* Main Area */
+    .mainArea{
+        width: 100%;
+        height: 100vh;
+    }
+
+/* Left Bar*/
+    .leftBar{
+        width: 25%;
+        height: 100%;
+
+        background-color: $lightestGreen;
+    }
+
+    .header{
+        background-color: $lightGreen;
+        border-bottom: 2px solid $darkGreen;
+
+        font-size: 200%;
+
+        width: 100%;
+        height: fit-content;
+
+        color: $brown;
+
+        @include padding(0, 0, 40px, 40px);
+
+        img{@include images(30px, 30px);}
+    }
+
+    .noteTab{
+        @include padding(5px, 5px, 40px, 40px);
+
+        color: $brown;
+        font-size: 125%;
+
+        border-bottom: 1px solid $darkGreen;
+
+        img{
+            display: none;
+            @include images(15px, 15px);
+        }
+    }
+
+        .noteTab:hover{
+            background-color: $lighterGreen;
+
+            img{
+                display: inline;
+            }
+        }
+
+/* Right Area */

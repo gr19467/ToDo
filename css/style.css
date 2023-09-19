@@ -1,0 +1,82 @@
+body {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  font-family: "Quicksand", sans-serif;
+}
+
+.nav {
+  background-color: #5B7553;
+  color: #FFFFFF;
+  font-size: 250%;
+  font-weight: bold;
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 40px;
+  padding-left: 40px;
+}
+.nav .images {
+  width: 10%;
+}
+.nav .images img {
+  width: 30px;
+  height: 30px;
+}
+
+/* Main Area */
+.mainArea {
+  width: 100%;
+  height: 100vh;
+}
+
+/* Left Bar*/
+.leftBar {
+  width: 25%;
+  height: 100%;
+  background-color: rgba(197, 220, 160, 0.2509803922);
+}
+
+.header {
+  background-color: #C5DCA0;
+  border-bottom: 2px solid #5B7553;
+  font-size: 200%;
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  color: #3D2C2E;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-right: 40px;
+  padding-left: 40px;
+}
+.header img {
+  width: 30px;
+  height: 30px;
+}
+
+.noteTab {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 40px;
+  padding-left: 40px;
+  color: #3D2C2E;
+  font-size: 125%;
+  border-bottom: 1px solid #5B7553;
+}
+.noteTab img {
+  display: none;
+  width: 15px;
+  height: 15px;
+}
+
+.noteTab:hover {
+  background-color: rgba(197, 220, 160, 0.5019607843);
+}
+.noteTab:hover img {
+  display: inline;
+}
+
+/* Right Area *//*# sourceMappingURL=style.css.map */
