@@ -32,8 +32,41 @@
     }
 
     /*creates a new toDo*/
-    function newToDo(){
+    var j = 0;
+
+    function newToDo(num){
+                /*increment k*/
+                k++;
+
+                /*create the new to-do div*/
+                const node = document.createElement("div");
+
+                /*create the first new div: checkbox & title*/
+                const titleDiv = document.createElement("div");
+
+                /*create the checkbox*/
         
+                /*create the to-do title*/
+                const textnode = document.createTextNode("New to-do");
+
+                /*add them to the div*/
+        
+                /*create the trash image and add its classes/attributes*/
+                const trash = document.createElement("img");
+                trash.setAttribute("src", "/images/trash.png");
+                trash.setAttribute("onclick", "deleteToDo(" + k + ")")
+                trash.classList.add("self-center");
+                
+                /*add the title div & trash*/
+                node.appendChild(titleDiv);
+                node.appendChild(trash);
+        
+                /*add the to-do's classes/attributes*/
+                node.classList.add("to-do", "flex", "justify-between")
+                node.setAttribute("id", "toDo" + k);
+                
+                /*add the div to the note*/
+                document.getElementById("note" + num).appendChild(node);
     }
 
 /*Delete/Close*/
