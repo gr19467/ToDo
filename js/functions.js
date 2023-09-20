@@ -24,8 +24,9 @@
         node.appendChild(trash);
 
         /*add the note's classes/attributes*/
-        node.classList.add("noteTab", "flex", "justify-between")
+        node.classList.add("noteTab", "flex", "justify-between");
         node.setAttribute("id", "noteTab" + i);
+        node.setAttribute("onclick", "openNote(" + i + ")");
         
         /*add the div to the left bar*/
         document.getElementById("leftBar").appendChild(node);
@@ -130,7 +131,12 @@
         document.getElementById("note" + num).appendChild(node);
     }
 
-/*Delete/Close*/
+/*Open/Delete/Close*/
+    /*opens the note*/
+    function openNote(num){
+        document.getElementById("note" + num).hidden = false;
+    }
+
     /*deletes a note*/
     function deleteNote(num){
         /*remove the note tab from the left bar*/
