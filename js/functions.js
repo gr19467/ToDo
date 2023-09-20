@@ -163,6 +163,6 @@
 
 /*changes note title upon input*/
 function changeTitle(num){
-    var newTitle = document.getElementById("noteTab" + i).textContent;
-    document.getElementById("title" + i).textContent = newTitle;
+    var newTitle = document.getElementById("noteTab" + num).textContent;
+    document.getElementById("title" + num).textContent = newTitle;
 }
