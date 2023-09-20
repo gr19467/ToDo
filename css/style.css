@@ -95,6 +95,7 @@ body {
   border-radius: 20px;
   border: 2px solid #5B7553;
   color: #3D2C2E;
+  position: absolute;
 }
 .note .noteTitle {
   background-color: #C5DCA0;
@@ -106,6 +107,7 @@ body {
   padding-right: 20px;
   padding-left: 20px;
   font-size: 150%;
+  cursor: move;
 }
 .note .noteTitle .buttons {
   width: 25%;

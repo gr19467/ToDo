@@ -119,6 +119,8 @@ body{
 
         color: $brown;
 
+        position: absolute;
+
         .noteTitle{
             background-color: $lightGreen;
 
@@ -129,6 +131,8 @@ body{
             @include padding(5px, 5px, 20px, 20px);
 
             font-size: 150%;
+
+            cursor: move;
 
             .buttons{
                 width: 25%;
