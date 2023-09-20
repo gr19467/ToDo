@@ -134,7 +134,7 @@
 /*Open/Delete/Close*/
     /*opens the note*/
     function openNote(num){
-        document.getElementById("note" + num).hidden = false;
+        document.getElementById("note" + num).style.display = "block";
     }
 
     /*deletes a note*/
@@ -142,13 +142,13 @@
         /*remove the note tab from the left bar*/
         document.getElementById("noteTab" + num).remove();
 
-        /*hide the note if it was open*/
-        document.getElementById("note" + num).hidden() = true;
+        /*remove the note*/
+        document.getElementById("note" + num).remove();
     }
 
     /*hides a note*/
     function closeNote(num){
-        document.getElementById("note" + num).hidden() = true;
+        document.getElementById("note" + num).style.display = "none";
     }
 
     /*deletes to-do*/
