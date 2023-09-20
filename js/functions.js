@@ -1,3 +1,8 @@
+/*TO DO
+1. Reorder to-dos
+2. Storage
+3. Clear all completed
+*/
 
 /*New*/
     /*creates a new noteTab*/
@@ -112,11 +117,15 @@
         check.setAttribute("type", "checkbox");
         
         /*create the to-do title*/
-        const textnode = document.createTextNode("New to-do");
+        const textnode = document.createElement("h1");
+        textnode.textContent = "New to-do";
+        textnode.setAttribute("contenteditable", "true");
+        textnode.setAttribute("onclick", "this.focus()");
 
         /*add them to the div*/
         titleDiv.appendChild(check);
         titleDiv.appendChild(textnode);
+        titleDiv.classList.add("flex");
         
         /*create the trash image and add its classes/attributes*/
         const trash = document.createElement("img");
@@ -131,7 +140,6 @@
         /*add the to-do's classes/attributes*/
         node.classList.add("to-do", "flex", "justify-between")
         node.setAttribute("id", "toDo" + j);
-        node.setAttribute("contenteditable", "true");
                 
         /*add the div to the note*/
         document.getElementById("note" + num).appendChild(node);
