@@ -11,7 +11,10 @@
         const node = document.createElement("div");
 
         /*create the note title*/
-        const textnode = document.createTextNode("New Note");
+        const textnode = document.createElement("h1");
+        textnode.textContent = "New Note";
+        textnode.setAttribute("contenteditable", "true");
+        textnode.setAttribute("oninput", "changeTitle(" + i + ")");
 
         /*create the trash image and add its classes/attributes*/
         const trash = document.createElement("img");
@@ -44,7 +47,9 @@
         const titleDiv = document.createElement("div")
 
             /*create the note title*/
-            const textnode = document.createTextNode("New Note");
+            const textnode = document.createElement("h1");
+            textnode.textContent = "New Note";
+            textnode.setAttribute("id", "title" + i);
 
             /*create the buttons div*/
             const buttons = document.createElement("div");
@@ -73,7 +78,7 @@
             titleDiv.appendChild(buttons);
 
         /*add the title div's attributes/classes*/
-        titleDiv.classList.add("noteTitle", "flex", "justify-between");    
+        titleDiv.classList.add("noteTitle", "flex", "justify-between");
 
         /*add the div to the note*/
         note.appendChild(titleDiv);
@@ -125,7 +130,7 @@
         /*add the to-do's classes/attributes*/
         node.classList.add("to-do", "flex", "justify-between")
         node.setAttribute("id", "toDo" + j);
-        node.setAttribute("contenteditable", 'true');
+        node.setAttribute("contenteditable", "true");
                 
         /*add the div to the note*/
         document.getElementById("note" + num).appendChild(node);
@@ -155,3 +160,9 @@
     function deleteToDo(num){
         document.getElementById("toDo" + num).remove();
     }
+
+/*changes note title upon input*/
+function changeTitle(num){
+    var newTitle = document.getElementById("noteTab" + i).textContent;
+    document.getElementById("title" + i).textContent = newTitle;
+}
