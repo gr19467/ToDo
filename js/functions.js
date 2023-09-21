@@ -1,7 +1,6 @@
 /*TO DO
 1. Reorder to-dos
 2. Storage
-3. Clear all completed
 */
 
 /*New*/
@@ -113,7 +112,7 @@
         /*add the note's classes/attributes*/
         note.classList.add("note");
         note.setAttribute("id", "note" + i);
-        /*note.setAttribute("onmouseover", "dragElement(note" + i + ")");*/
+        note.setAttribute("onmouseover", "dragElement(note" + i + ")");
                 
         /*add the div to the right area*/
         document.getElementById("rightArea").appendChild(note);
@@ -225,7 +224,6 @@ function changeTitle(num){
 }
 
 /*note moving*/
-/*
     function dragElement(elmnt) {
         var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
         
@@ -256,7 +254,7 @@ function changeTitle(num){
         }
     
         function closeDragElement() {
-        /* stop moving when mouse button is released:
+        // stop moving when mouse button is released:
         document.onmouseup = null;
         document.onmousemove = null;
         }
