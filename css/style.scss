@@ -168,4 +168,29 @@ body{
                     display: inline;
                 }
             }
+
+            .to-do.over{
+                border: dotted 2px $brown;
+            }
+
+        .footer{
+            position: absolute;
+            bottom: 0;
+
+            width: 100%;
+            height: 10%;
+
+            background-color: $lightGreen;
+            color: $brown;
+
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            border-top: $largeBorder;
+
+            @include padding(0, 0, 20px, 20px);
+
+            img{
+                @include images(20px, 20px);
+            }
+        }
     }

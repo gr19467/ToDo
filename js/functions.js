@@ -85,8 +85,30 @@
         /*add the title div's attributes/classes*/
         titleDiv.classList.add("noteTitle", "flex", "justify-between");
 
-        /*add the div to the note*/
+        /*create the footer*/
+        const footer = document.createElement("div");
+
+            /*create the text for the footer*/
+            const clear = document.createElement("h1");
+            clear.textContent = "Clear all completed";
+            clear.classList.add("self-center");
+
+            /*add the image*/
+            const clearButton = document.createElement("img");
+            clearButton.setAttribute("src", "/Images/clear.png");
+            clearButton.setAttribute("onclick", "clearCompleted(" + i + ")");
+            clearButton.classList.add("self-center");
+
+            /*add the elements to the div*/
+            footer.appendChild(clear);
+            footer.appendChild(clearButton);
+
+            /*add the footer's classes/attributes*/
+            footer.classList.add("footer", "flex", "justify-between");
+
+        /*add the divs to the note*/
         note.appendChild(titleDiv);
+        note.appendChild(footer);
         
         /*add the note's classes/attributes*/
         note.classList.add("note");
@@ -115,6 +137,7 @@
 
         /*add the checkbox's attributes*/
         check.setAttribute("type", "checkbox");
+        check.classList.add("box" + num);
         
         /*create the to-do title*/
         const textnode = document.createElement("h1");
@@ -171,6 +194,30 @@
         document.getElementById("toDo" + num).remove();
     }
 
+    /*clears all completed to-dos*/
+    function clearCompleted(num){
+        // Pass the checkbox name to the function
+        function getCheckedBoxes() {
+            var checkboxes = document.getElementsByClassName("box" + num);
+            var checkboxesChecked = [];
+            // loop over them all
+            for (var i=0; i<checkboxes.length; i++) {
+                // And stick the checked ones onto an array...
+                if (checkboxes[i].checked) {
+                    checkboxesChecked.push(checkboxes[i]);
+                }
+            }
+            // Return the array if it is non-empty, or null
+            return checkboxesChecked.length > 0 ? checkboxesChecked : null;
+        }
+  
+        // Call as
+        var checkedBoxes = getCheckedBoxes("mycheckboxes");
+        checkedBoxes.forEach(box =>{
+            box.parentElement.parentElement.remove();
+        });
+    }
+
 /*changes note title upon input*/
 function changeTitle(num){
     var newTitle = document.getElementById("noteTab" + num).textContent;
@@ -216,16 +263,4 @@ function changeTitle(num){
     }
 
 /*to-do reordering*/
-    function handleDragStart(e) {
-        this.style.opacity = '0.4';
-    }
-    
-    function handleDragEnd(e) {
-        this.style.opacity = '1';
-    }
-    
-    let items = document.querySelectorAll('.container .box');
-    items.forEach(function (item) {
-        item.addEventListener('dragstart', handleDragStart);
-        item.addEventListener('dragend', handleDragEnd);
-    });
+
