@@ -32,6 +32,7 @@
 
         /*add the note's classes/attributes*/
         node.classList.add("noteTab", "flex", "justify-between");
+        node.classList.add("fadeIn");
         node.setAttribute("id", "noteTab" + i);
         node.setAttribute("onclick", "openNote(" + i + ")");
         
@@ -111,6 +112,7 @@
         
         /*add the note's classes/attributes*/
         note.classList.add("note");
+        note.classList.add("fadeIn");
         note.setAttribute("id", "note" + i);
         note.setAttribute("onmouseover", "dragElement(note" + i + ")");
                 
@@ -161,6 +163,7 @@
         
         /*add the to-do's classes/attributes*/
         node.classList.add("to-do", "flex", "justify-between")
+        node.classList.add("fadeIn");
         node.setAttribute("id", "toDo" + j);
         node.setAttribute("draggable", "true");
 
