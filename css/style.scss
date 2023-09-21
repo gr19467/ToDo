@@ -149,6 +149,8 @@ body{
             @include padding(5px, 5px, 20px, 20px);
             border-bottom: $smallBorder;
 
+            cursor: move;
+
             input{
                 margin-right: 5px;
             }

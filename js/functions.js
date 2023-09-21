@@ -91,7 +91,7 @@
         /*add the note's classes/attributes*/
         note.classList.add("note");
         note.setAttribute("id", "note" + i);
-        note.setAttribute("onmouseover", "dragElement(note" + i + ")");
+        /*note.setAttribute("onmouseover", "dragElement(note" + i + ")");*/
                 
         /*add the div to the right area*/
         document.getElementById("rightArea").appendChild(note);
@@ -140,7 +140,8 @@
         /*add the to-do's classes/attributes*/
         node.classList.add("to-do", "flex", "justify-between")
         node.setAttribute("id", "toDo" + j);
-                
+        node.setAttribute("draggable", "true");
+
         /*add the div to the note*/
         document.getElementById("note" + num).appendChild(node);
     }
@@ -176,7 +177,8 @@ function changeTitle(num){
     document.getElementById("title" + num).textContent = newTitle;
 }
 
-/*div moving*/
+/*note moving*/
+/*
     function dragElement(elmnt) {
         var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
         
@@ -207,8 +209,23 @@ function changeTitle(num){
         }
     
         function closeDragElement() {
-        /* stop moving when mouse button is released:*/
+        /* stop moving when mouse button is released:
         document.onmouseup = null;
         document.onmousemove = null;
         }
     }
+
+/*to-do reordering*/
+    function handleDragStart(e) {
+        this.style.opacity = '0.4';
+    }
+    
+    function handleDragEnd(e) {
+        this.style.opacity = '1';
+    }
+    
+    let items = document.querySelectorAll('.container .box');
+    items.forEach(function (item) {
+        item.addEventListener('dragstart', handleDragStart);
+        item.addEventListener('dragend', handleDragEnd);
+    });
