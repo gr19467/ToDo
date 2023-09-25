@@ -316,6 +316,3 @@ function changeTitle(num){
         document.onmousemove = null;
         }
     }
-
-/*to-do reordering*/
-
