@@ -14,11 +14,22 @@
         /*create the new div*/
         const node = document.createElement("div");
 
-        /*create the note title*/
-        const textnode = document.createElement("h1");
-        textnode.textContent = "New Note";
-        textnode.setAttribute("contenteditable", "true");
-        textnode.setAttribute("oninput", "changeTitle(" + i + ")");
+        /*create the note title div*/
+        const titleDiv = document.createElement("div");
+            const textnode = document.createElement("h1");
+            textnode.textContent = "New Note";
+            textnode.setAttribute("contenteditable", "true");
+            textnode.setAttribute("oninput", "changeTitle(" + i + ")");
+
+            const openNote = document.createElement("img");
+            openNote.setAttribute("src", "/images/open.png");
+            openNote.setAttribute("onclick", "openNote(" + i + ")");
+            openNote.classList.add("self-center");
+
+            titleDiv.appendChild(openNote);
+            titleDiv.appendChild(textnode);
+
+            titleDiv.classList.add("flex");
 
         /*create the trash image and add its classes/attributes*/
         const trash = document.createElement("img");
@@ -27,14 +38,13 @@
         trash.classList.add("self-center");
         
         /*add the title and image*/
-        node.appendChild(textnode);
+        node.appendChild(titleDiv);
         node.appendChild(trash);
 
         /*add the note's classes/attributes*/
         node.classList.add("noteTab", "flex", "justify-between");
         node.classList.add("fadeIn");
         node.setAttribute("id", "noteTab" + i);
-        node.setAttribute("onclick", "openNote(" + i + ")");
         
         /*add the div to the left bar*/
         document.getElementById("leftBar").appendChild(node);
@@ -174,26 +184,63 @@
 /*Open/Delete/Close*/
     /*opens the note*/
     function openNote(num){
-        document.getElementById("note" + num).style.display = "block";
+        document.getElementById("note" + num).classList.remove("fadeOut");
+
+        note.classList.add("fadeIn");
+
+        function temp(){
+            document.getElementById("note" + num).style.display = "block";
+        }
+        
+        setTimeout(temp, 500);
     }
 
     /*deletes a note*/
     function deleteNote(num){
-        /*remove the note tab from the left bar*/
-        document.getElementById("noteTab" + num).remove();
+        noteTab = document.getElementById("noteTab" + num);
+        note = document.getElementById("note" + num);
 
-        /*remove the note*/
-        document.getElementById("note" + num).remove();
+        noteTab.classList.remove("fadeIn");
+        note.classList.remove("fadeIn");
+
+        noteTab.classList.add("fadeOut");
+        note.classList.add("fadeOut");
+
+        function temp(){
+            /*remove the note tab from the left bar*/
+            noteTab.remove();
+
+            /*remove the note*/
+            note.remove();
+        }
+
+        setTimeout(temp, 500);
     }
 
     /*hides a note*/
     function closeNote(num){
-        document.getElementById("note" + num).style.display = "none";
+        note = document.getElementById("note" + num);
+
+        note.classList.remove("fadeIn");
+
+        note.classList.add("fadeOut");
+
+        function temp(){
+            note.style.display = "none";
+        }
+
+        setTimeout(temp, 500);
     }
 
     /*deletes to-do*/
     function deleteToDo(num){
-        document.getElementById("toDo" + num).remove();
+        document.getElementById("toDo" + num).classList.add("fadeOut");
+
+        function temp(){
+            document.getElementById("toDo" + num).remove();
+        }
+
+        setTimeout(temp, 500);
     }
 
     /*clears all completed to-dos*/
@@ -216,7 +263,14 @@
         // Call as
         var checkedBoxes = getCheckedBoxes("mycheckboxes");
         checkedBoxes.forEach(box =>{
-            box.parentElement.parentElement.remove();
+
+            box.parentElement.parentElement.classList.add("fadeOut");
+
+            function temp(){
+                box.parentElement.parentElement.remove();
+            }
+            
+            setTimeout(temp, 500);
         });
     }
 
