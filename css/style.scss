@@ -112,7 +112,11 @@ body{
 
     .note{
         width: 25%;
+        min-width: 15%;
+        max-width: 50%;
         height: 75%;
+        min-height: 25%;
+        max-height: 90%;
 
         border-radius: 20px;
         border: $largeBorder;
