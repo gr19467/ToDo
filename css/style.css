@@ -96,6 +96,8 @@ body {
   border: 2px solid #5B7553;
   color: #3D2C2E;
   position: absolute;
+  resize: both;
+  overflow: auto;
 }
 .note .noteTitle {
   background-color: #C5DCA0;

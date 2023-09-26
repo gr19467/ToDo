@@ -121,6 +121,9 @@ body{
 
         position: absolute;
 
+        resize: both;
+        overflow: auto;
+
         .noteTitle{
             background-color: $lightGreen;
 
