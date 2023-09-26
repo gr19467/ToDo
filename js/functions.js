@@ -17,7 +17,7 @@
             textnode.setAttribute("oninput", "changeTitle(" + i + ")");
 
             const openNote = document.createElement("img");
-            openNote.setAttribute("src", "./images/open.png");
+            openNote.setAttribute("src", "./Images/open.png");
             openNote.setAttribute("onclick", "openNote(" + i + ")");
             openNote.classList.add("self-center");
 
@@ -28,7 +28,7 @@
 
         /*create the trash image and add its classes/attributes*/
         const trash = document.createElement("img");
-        trash.setAttribute("src", "./images/trash.png");
+        trash.setAttribute("src", "./Images/trash.png");
         trash.setAttribute("onclick", "deleteNote(" + i + ")")
         trash.classList.add("self-center");
         
@@ -69,13 +69,13 @@
 
                 /*create the add image and add its classes/attributes*/
                 const add = document.createElement("img");
-                add.setAttribute("src", "./images/add.png");
+                add.setAttribute("src", "./Images/add.png");
                 add.setAttribute("onclick", "newToDo(" + i + ")")
                 add.classList.add("self-center");
 
                 /*create the close image and add its classes/attributes*/
                 const close = document.createElement("img");
-                close.setAttribute("src", "./images/close.png");
+                close.setAttribute("src", "./Images/close.png");
                 close.setAttribute("onclick", "closeNote(" + i + ")")
                 close.classList.add("self-center");
 
@@ -158,7 +158,7 @@
         
         /*create the trash image and add its classes/attributes*/
         const trash = document.createElement("img");
-        trash.setAttribute("src", "./images/trash.png");
+        trash.setAttribute("src", "./Images/trash.png");
         trash.setAttribute("onclick", "deleteToDo(" + j + ")")
         trash.classList.add("self-center");
                 
