@@ -16,18 +16,18 @@
 </head>
 <body>
     <!--Nav Bar-->
-    <div class="nav flex justify-between">
+    <div class="nav flex justify-between dark">
         <h1>List Maker</h1>
         <div class="images flex justify-evenly">
-            <img class="self-center" src="./Images/settings.png" alt="">
+            <img class="self-center" onclick="dropdown()" src="./Images/settings.png" alt="">
             <img class="self-center" src="./Images/user.png" alt="">
         </div>
     </div>
     <!--Main Area-->
     <div class="mainArea flex">
         <!--Left Bar-->
-        <div class="leftBar" id="leftBar">
-            <div class="header flex justify-between">
+        <div class="leftBar lightest" id="leftBar">
+            <div class="header light flex justify-between">
                 <h1>Lists</h1>
                 <img class="self-center" onclick="newNoteTab()" src="./Images/add.png" alt="">
             </div>
@@ -37,6 +37,14 @@
         </div>
         <!--Right Area-->
         <div class="rightArea flex" id="rightArea">
+            <div class="justify-self-end" id="settings" style="display: none;">
+                <h1>Theme</h1>
+                <div class="flex justify-evenly">
+                    <img onclick="greenTheme()" src="./Images/green.jpg" alt="">
+                    <img onclick="blueTheme()" src="./Images/blue.jpg" alt="">
+                    <img onclick="brownTheme()" src="./Images/brown.jpg" alt="">
+                </div>
+            </div>
             <!--Test Note
             <div class="note">
                 <div class="noteTitle flex justify-between">

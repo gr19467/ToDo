@@ -88,7 +88,7 @@
             titleDiv.appendChild(buttons);
 
         /*add the title div's attributes/classes*/
-        titleDiv.classList.add("noteTitle", "flex", "justify-between");
+        titleDiv.classList.add("noteTitle", "light", "flex", "justify-between");
         titleDiv.setAttribute("id", "note" + i + "header");
 
         /*create the footer*/
@@ -110,7 +110,7 @@
             footer.appendChild(clearButton);
 
             /*add the footer's classes/attributes*/
-            footer.classList.add("footer", "flex", "justify-between");
+            footer.classList.add("footer", "light", "flex", "justify-between");
 
         /*add the divs to the note*/
         note.appendChild(titleDiv);
@@ -313,3 +313,26 @@ function changeTitle(num){
             document.onmousemove = null;
         }
     }
+
+//change theme
+    const dark = document.querySelectorAll(".dark");
+    const light = document.getElementsByClassName("light");
+    const lighter = document.getElementsByClassName("lighter");
+    const lightest = document.getElementsByClassName("lightest");
+
+    function blueTheme(){
+        dark.forEach(element => {
+            element.style.backgroundColor = "#2E5EAA";
+        });
+    }
+
+//dropdown
+function dropdown(){
+    const settings = document.getElementById('settings');
+
+    if(settings.style.display === "none"){
+        settings.style.display = "block";
+    }else{
+        settings.style.display = "none";
+    }
+}

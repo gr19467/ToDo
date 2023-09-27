@@ -1,3 +1,19 @@
+.light {
+  background-color: #C5DCA0;
+}
+
+.dark {
+  background-color: #5B7553;
+}
+
+.lighter {
+  background-color: rgba(197, 220, 160, 0.5019607843);
+}
+
+.lightest {
+  background-color: rgba(197, 220, 160, 0.2509803922);
+}
+
 body {
   margin: 0 auto;
   width: 100%;
@@ -6,7 +22,6 @@ body {
 }
 
 .nav {
-  background-color: #5B7553;
   color: #FFFFFF;
   font-size: 250%;
   font-weight: bold;
@@ -36,11 +51,9 @@ body {
 .leftBar {
   width: 25%;
   height: 100%;
-  background-color: rgba(197, 220, 160, 0.2509803922);
 }
 
 .header {
-  background-color: #C5DCA0;
   border-bottom: 2px solid #5B7553;
   font-size: 200%;
   width: 100%;
@@ -83,10 +96,6 @@ body {
 .rightArea {
   width: 75%;
   height: 100%;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  padding-right: 40px;
-  padding-left: 40px;
 }
 
 .note {
@@ -104,7 +113,6 @@ body {
   overflow: auto;
 }
 .note .noteTitle {
-  background-color: #C5DCA0;
   border-bottom: 2px solid #5B7553;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
@@ -152,7 +160,6 @@ body {
   bottom: 0;
   width: 100%;
   height: 10%;
-  background-color: #C5DCA0;
   color: #3D2C2E;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
@@ -165,4 +172,22 @@ body {
 .note .footer img {
   width: 20px;
   height: 20px;
+}
+
+#settings {
+  position: absolute;
+  right: 40px;
+  border: 2px solid #5B7553;
+  border-radius: 20px;
+  width: 10vw;
+  margin-top: 1vw;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+#settings img {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
 }/*# sourceMappingURL=style.css.map */

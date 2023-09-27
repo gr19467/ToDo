@@ -1,13 +1,20 @@
 $white: #FFFFFF;
+
+//Green Theme
 $lightGreen: #C5DCA0;
 $lighterGreen: #c5dca080;
 $lightestGreen: #c5dca040;
 $darkGreen: #5B7553;
-$teal: #36827F;
 $brown: #3D2C2E;
 $lighterBrown: #533c3f;
 $smallBorder: 1px solid $darkGreen;
 $largeBorder: 2px solid $darkGreen;
+
+//Blue Theme
+$lightBlue: #51D6FF;
+$lighterBlue: #51d6ff80;
+$lightestBlue: #51d6ff3e;
+$darkBlue: #2E5EAA;
 
 @mixin padding($top, $bottom, $right, $left){
     padding-top: $top;
@@ -21,6 +28,22 @@ $largeBorder: 2px solid $darkGreen;
     height: $height;
 }
 
+.light{
+    background-color: $lightGreen;
+}
+
+.dark{
+    background-color: $darkGreen;
+}
+
+.lighter{
+    background-color: $lighterGreen;
+}
+
+.lightest{
+    background-color: $lightestGreen;
+}
+
 body{
     margin: 0 auto;
 
@@ -31,8 +54,6 @@ body{
 }
 
 .nav{
-    background-color: $darkGreen;
-
     color: $white;
     font-size: 250%;
     font-weight: bold;
@@ -60,12 +81,9 @@ body{
     .leftBar{
         width: 25%;
         height: 100%;
-
-        background-color: $lightestGreen;
     }
 
     .header{
-        background-color: $lightGreen;
         border-bottom: $largeBorder;
 
         font-size: 200%;
@@ -106,8 +124,6 @@ body{
     .rightArea{
         width: 75%;
         height: 100%;
-
-        @include padding(40px, 40px, 40px, 40px);
     }
 
     .note{
@@ -129,8 +145,6 @@ body{
         overflow: auto;
 
         .noteTitle{
-            background-color: $lightGreen;
-
             border-bottom: $largeBorder;
             border-top-left-radius: 20px;
             border-top-right-radius: 20px;
@@ -187,7 +201,6 @@ body{
             width: 100%;
             height: 10%;
 
-            background-color: $lightGreen;
             color: $brown;
 
             border-bottom-left-radius: 20px;
@@ -199,5 +212,24 @@ body{
             img{
                 @include images(20px, 20px);
             }
+        }
+    }
+
+    #settings{
+        position: absolute;
+        right: 40px;
+
+        border: $largeBorder;
+        border-radius: 20px;
+
+        width: 10vw;
+
+        margin-top: 1vw;
+        
+        @include padding(5px, 5px, 10px, 10px);
+
+        img{
+            @include images(30px, 30px);
+            border-radius: 10px;
         }
     }
