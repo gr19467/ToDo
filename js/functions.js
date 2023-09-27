@@ -39,6 +39,7 @@
         /*add the note's classes/attributes*/
         node.classList.add("noteTab", "flex", "justify-between");
         node.classList.add("fadeIn");
+        node.setAttribute("onmouseover", "makeLighter(" + i + ")");
         node.setAttribute("id", "noteTab" + i);
         
         /*add the div to the left bar*/
@@ -315,17 +316,38 @@ function changeTitle(num){
     }
 
 //change theme
-    const dark = document.querySelectorAll(".dark");
+    const dark = document.getElementsByClassName("dark");
     const light = document.getElementsByClassName("light");
     const lighter = document.getElementsByClassName("lighter");
     const lightest = document.getElementsByClassName("lightest");
+    const borders = document.getElementsByTagName("div");
 
     function blueTheme(){
-        dark.forEach(element => {
-            element.style.backgroundColor = "#2E5EAA";
-        });
+        for (var i = 0; i < dark.length; i++) {
+            dark[i].style.backgroundColor="#2E5EAA";
+        }
+
+        for (var i = 0; i < light.length; i++) {
+            light[i].style.backgroundColor="#77aafb";
+        }
+
+        for (var i = 0; i < lighter.length; i++) {
+            lighter[i].style.backgroundColor="#77aafb7c";
+        }
+
+        for (var i = 0; i < lightest.length; i++) {
+            lightest[i].style.backgroundColor="#77aafb47";
+        }
+
+        for (var i = 0; i < borders.length; i++) {
+            borders[i].style.borderColor = "#2E5EAA";
+        }
     }
 
+    //make lighter onmouseover
+    function makeLighter(){
+        document.getElementById("noteTab" + i).classList.add("lighter");
+    }
 //dropdown
 function dropdown(){
     const settings = document.getElementById('settings');
