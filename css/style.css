@@ -14,6 +14,10 @@
   background-color: rgba(197, 220, 160, 0.2509803922);
 }
 
+.white {
+  background-color: #FFFFFF;
+}
+
 body {
   margin: 0 auto;
   width: 100%;
@@ -85,9 +89,6 @@ body {
   height: 15px;
 }
 
-.noteTab:hover {
-  background-color: rgba(197, 220, 160, 0.5019607843);
-}
 .noteTab:hover img {
   display: inline;
 }
@@ -136,7 +137,6 @@ body {
   padding-right: 20px;
   padding-left: 20px;
   border-bottom: 1px solid #5B7553;
-  cursor: move;
 }
 .note .to-do input {
   margin-right: 5px;
@@ -146,14 +146,8 @@ body {
   width: 15px;
   height: 15px;
 }
-.note .to-do:hover {
-  background-color: rgba(197, 220, 160, 0.2509803922);
-}
 .note .to-do:hover img {
   display: inline;
-}
-.note .to-do.over {
-  border: dotted 2px #3D2C2E;
 }
 .note .footer {
   position: absolute;

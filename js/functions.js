@@ -1,3 +1,7 @@
+var green = true;
+var blue = false;
+var brown = false;
+
 /*New*/
     /*creates a new noteTab*/
     var i = 0;
@@ -39,11 +43,21 @@
         /*add the note's classes/attributes*/
         node.classList.add("noteTab", "flex", "justify-between");
         node.classList.add("fadeIn");
-        node.setAttribute("onmouseover", "makeLighter(" + i + ")");
+        node.setAttribute("onmouseover", "makeTabLighter(" + i + ")");
+        node.setAttribute("onmouseleave", "makeTabLightest(" + i + ")");
         node.setAttribute("id", "noteTab" + i);
         
         /*add the div to the left bar*/
         document.getElementById("leftBar").appendChild(node);
+
+        //make sure it's the right theme
+        if(green){
+            greenTheme();
+        }else if (blue){
+            blueTheme();
+        }else{
+            brownTheme();
+        }
 
         /*create a new note to go with it*/
         newNote();
@@ -125,6 +139,15 @@
                 
         /*add the div to the right area*/
         document.getElementById("rightArea").appendChild(note);
+
+        //make sure it's the right theme
+        if(green){
+            greenTheme();
+        }else if (blue){
+            blueTheme();
+        }else{
+            brownTheme();
+        }
     }
 
     /*creates a new toDo*/
@@ -172,10 +195,20 @@
         node.classList.add("to-do", "flex", "justify-between")
         node.classList.add("fadeIn");
         node.setAttribute("id", "toDo" + j);
-        node.setAttribute("draggable", "true");
+        node.setAttribute("onmouseover", "makeToDoLighter(" + j + ")");
+        node.setAttribute("onmouseleave", "makeToDoLightest(" + j + ")");
 
         /*add the div to the note*/
         document.getElementById("note" + num).appendChild(node);
+
+        //make sure it's the right theme
+        if(green){
+            greenTheme();
+        }else if (blue){
+            blueTheme();
+        }else{
+            brownTheme();
+        }
     }
 
 /*Open/Delete/Close*/
@@ -321,8 +354,13 @@ function changeTitle(num){
     const lighter = document.getElementsByClassName("lighter");
     const lightest = document.getElementsByClassName("lightest");
     const borders = document.getElementsByTagName("div");
+    const white = document.getElementsByClassName("white");
 
     function blueTheme(){
+        green = false;
+        brown = false;
+        blue = true;
+
         for (var i = 0; i < dark.length; i++) {
             dark[i].style.backgroundColor="#2E5EAA";
         }
@@ -342,12 +380,157 @@ function changeTitle(num){
         for (var i = 0; i < borders.length; i++) {
             borders[i].style.borderColor = "#2E5EAA";
         }
+
+        for(var i = 0; i < white.length; i++){
+            white[i].style.backgroundColor = "transparent";
+        }
+
+        document.getElementById("rightArea").style.backgroundColor = "#FFFFFF";
     }
 
-    //make lighter onmouseover
-    function makeLighter(){
-        document.getElementById("noteTab" + i).classList.add("lighter");
+    function greenTheme(){
+        green = true;
+        brown = false;
+        blue = false;
+
+        for (var i = 0; i < dark.length; i++) {
+            dark[i].style.backgroundColor="#5B7553";
+        }
+
+        for (var i = 0; i < light.length; i++) {
+            light[i].style.backgroundColor="#C5DCA0";
+        }
+
+        for (var i = 0; i < lighter.length; i++) {
+            lighter[i].style.backgroundColor="#c5dca080";
+        }
+
+        for (var i = 0; i < lightest.length; i++) {
+            lightest[i].style.backgroundColor="#c5dca040";
+        }
+
+        for (var i = 0; i < borders.length; i++) {
+            borders[i].style.borderColor = "#5B7553";
+        }
+
+        for(var i = 0; i < white.length; i++){
+            white[i].style.backgroundColor = "transparent";
+        }
+
+        document.getElementById("rightArea").style.backgroundColor = "#FFFFFF";
     }
+
+    function brownTheme(){
+        green = false;
+        brown = true;
+        blue = false;
+
+        for (var i = 0; i < dark.length; i++) {
+            dark[i].style.backgroundColor="#453F38";
+        }
+
+        for (var i = 0; i < light.length; i++) {
+            light[i].style.backgroundColor="#82796E";
+        }
+
+        for (var i = 0; i < lighter.length; i++) {
+            lighter[i].style.backgroundColor="#82796e75";
+        }
+
+        for (var i = 0; i < lightest.length; i++) {
+            lightest[i].style.backgroundColor="#82796e32";
+        }
+
+        for (var i = 0; i < borders.length; i++) {
+            borders[i].style.borderColor = "#453F38";
+        }
+
+        for(var i = 0; i < white.length; i++){
+            white[i].style.backgroundColor = "transparent";
+        }
+
+        document.getElementById("rightArea").style.backgroundColor = "#453f3871";
+    }
+
+    function makeTabLighter(num){
+        elmnt = document.getElementById("noteTab" + num);
+
+        if(green){
+            elmnt.classList.add("lighter");
+            elmnt.classList.remove("white");
+            greenTheme();
+        }else if(blue){
+            elmnt.classList.add("lighter");
+            elmnt.classList.remove("white");
+            blueTheme();
+        }else{
+            elmnt.classList.add("lighter");
+            elmnt.classList.remove("white");
+            brownTheme();
+        }
+    }
+
+    function makeTabLightest(num){
+        elmnt = document.getElementById("noteTab" + num);
+
+        if(green){
+            elmnt.classList.add("white");
+            elmnt.classList.remove("lighter");
+            greenTheme();
+        }else if(blue){
+            elmnt.classList.add("white");
+            elmnt.classList.remove("lighter");
+            blueTheme();
+        }else{
+            elmnt.classList.add("white");
+            elmnt.classList.remove("lighter");
+            brownTheme();
+        }
+    }
+
+    function makeToDoLighter(num){
+        elmnt = document.getElementById("toDo" + num);
+
+        if(green){
+            elmnt.classList.add("lightest");
+            elmnt.classList.remove("white");
+            elmnt.classList.remove("lighter");
+            greenTheme();
+        }else if(blue){
+            elmnt.classList.add("lightest");
+            elmnt.classList.remove("white");
+            elmnt.classList.remove("lighter");
+            blueTheme();
+        }else{
+            elmnt.classList.add("lighter");
+            elmnt.classList.remove("white");
+            elmnt.classList.remove("lightest");
+            brownTheme();
+        }
+    }
+
+    function makeToDoLightest(num){
+        elmnt = document.getElementById("toDo" + num);
+
+        if(green){
+            elmnt.classList.add("white");
+            elmnt.classList.remove("lightest");
+            elmnt.classList.remove("lighter");
+            greenTheme();
+        }else if(blue){
+            elmnt.classList.add("white");
+            elmnt.classList.remove("lightest");
+            elmnt.classList.remove("lighter");
+            blueTheme();
+        }else{
+            elmnt.classList.add("white");
+            elmnt.classList.remove("lightest");
+            elmnt.classList.remove("lighter");
+            brownTheme();
+        }
+    }
+
+
 //dropdown
 function dropdown(){
     const settings = document.getElementById('settings');

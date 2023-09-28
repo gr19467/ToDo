@@ -16,6 +16,12 @@ $lighterBlue: #77aafb7c;
 $lightestBlue: #77aafb47;
 $darkBlue: #2E5EAA;
 
+//Brown Theme
+$darkBrown: #453F38;
+$lightBrown: #82796E;
+$lighterBrown: #82796e75;
+$lighestBrown: #82796e32;
+
 @mixin padding($top, $bottom, $right, $left){
     padding-top: $top;
     padding-bottom: $bottom;
@@ -42,6 +48,10 @@ $darkBlue: #2E5EAA;
 
 .lightest{
     background-color: $lightestGreen;
+}
+
+.white{
+    background-color: $white;
 }
 
 body{
@@ -113,7 +123,6 @@ body{
     }
 
         .noteTab:hover{
-            background-color: $lighterGreen;
 
             img{
                 display: inline;
@@ -170,8 +179,6 @@ body{
             @include padding(5px, 5px, 20px, 20px);
             border-bottom: $smallBorder;
 
-            cursor: move;
-
             input{
                 margin-right: 5px;
             }
@@ -183,15 +190,10 @@ body{
         }
 
             .to-do:hover{
-                background-color: $lightestGreen;
 
                 img{
                     display: inline;
                 }
-            }
-
-            .to-do.over{
-                border: dotted 2px $brown;
             }
 
         .footer{
