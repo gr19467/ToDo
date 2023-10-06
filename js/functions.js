@@ -546,6 +546,7 @@ function dropdown(){
 function save(){
     //clear anything already in localstorage
     window.localStorage.clear();
+    console.log("localstorage now has " + localStorage.length + " items");
 
     //store i and j
     localStorage.setItem("iValue", JSON.stringify(i));
