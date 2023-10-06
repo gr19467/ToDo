@@ -869,3 +869,26 @@ function toDoHTML(title, id, note){
         brownTheme();
     }
 }
+
+//reset
+function reset(){
+    //reset everything and clear localstorage
+    let rightArea = document.getElementById("rightArea");
+    let notes = rightArea.getElementsByClassName("note");
+    for (let k = 0; k < notes.length; k++) {
+        const note = notes[k];
+        note.remove();
+    }
+
+    let leftBar = document.getElementById("leftBar");
+    let noteTabs = leftBar.getElementsByClassName("noteTab");
+    for (let k = 0; k < noteTabs.length; k++) {
+        const noteTab = noteTabs[k];
+        noteTab.remove();
+    }
+
+    localStorage.clear();
+
+    i = 0;
+    j = 0;
+}
