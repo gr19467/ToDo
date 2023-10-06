@@ -544,6 +544,9 @@ function dropdown(){
 
 //local storage
 function save(){
+    //clear anything already in localstorage
+    window.localStorage.clear();
+
     //store i and j
     localStorage.setItem("iValue", JSON.stringify(i));
     localStorage.setItem("jValue", JSON.stringify(j));
@@ -606,14 +609,17 @@ function save(){
 
 function sync(){
     console.log("syncing");
+    console.log("synced with storage at " + localStorage.length + " items");
+
+    
 
     //if i and j have a value
-    if(localStorage.getItem("iValue") >= 0 || localStorage.getItem("jValue") >= 0 ){
+    if(localStorage.getItem("iValue") > 0 || localStorage.getItem("jValue") > 0 ){
         //get i and j
-        i = localStorage.getItem("iValue");
-        console.log(i);
+        i = parseInt(localStorage.getItem("iValue"));
+        console.log("i = " + i);
         j = localStorage.getItem("jValue");
-        console.log(j);
+        console.log("j = " + j);
     }
 
     let l = 1;
@@ -735,7 +741,7 @@ function noteHTML(title, id, toDoTitles, toDoIds){
             /*create the add image and add its classes/attributes*/
             const add = document.createElement("img");
             add.setAttribute("src", "./Images/add.png");
-            add.setAttribute("onclick", "newToDo(" + j + ")")
+            add.setAttribute("onclick", "newToDo(" + num + ")")
                 add.classList.add("self-center");
 
             /*create the close image and add its classes/attributes*/
@@ -785,6 +791,7 @@ function noteHTML(title, id, toDoTitles, toDoIds){
     note.classList.add("note");
     note.classList.add("fadeIn");
     note.setAttribute("id", id);
+    console.log("note's id is " + id);
     note.setAttribute("onmouseover", "dragElement(note" + num + ")");
 
     /*add the div to the right area*/
