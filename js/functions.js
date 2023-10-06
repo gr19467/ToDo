@@ -582,6 +582,15 @@ function save(){
         }
     }
 
+    //save the current theme
+    if(green){
+        localStorage.setItem("theme", "greenTheme()");
+    }else if(blue){
+        localStorage.setItem("theme", "blueTheme()");
+    }else{
+        localStorage.setItem("theme", "brownTheme()");
+    }
+
     //flash the save button green
     saveButton = document.getElementById("save");
     saveButton.classList.remove("fadeIn");
@@ -637,6 +646,16 @@ function sync(){
         noteHTML(tabTitle, "note" + k, toDoTitles, toDoIds);
         console.log(toDoTitles);
         console.log(toDoIds);
+    }
+
+    //get the theme
+    theme = localStorage.getItem("theme");
+    if(theme === "greenTheme()"){
+        greenTheme();
+    }else if(theme === "blueTheme()"){
+        blueTheme();
+    }else{
+        brownTheme();
     }
 }
 
