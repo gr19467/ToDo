@@ -192,7 +192,7 @@ var brown = false;
         node.appendChild(trash);
         
         /*add the to-do's classes/attributes*/
-        node.classList.add("to-do", "flex", "justify-between")
+        node.classList.add("to-do", "flex", "justify-between");
         node.classList.add("fadeIn");
         node.setAttribute("id", "toDo" + j);
         node.setAttribute("onmouseover", "makeToDoLighter(" + j + ")");
@@ -539,5 +539,306 @@ function dropdown(){
         settings.style.display = "block";
     }else{
         settings.style.display = "none";
+    }
+}
+
+//local storage
+function save(){
+    //store i and j
+    localStorage.setItem("iValue", JSON.stringify(i));
+    localStorage.setItem("jValue", JSON.stringify(j));
+
+    //store the noteTabs
+    const noteTabs = document.getElementsByClassName("noteTab");
+    for (let k = 0; k < noteTabs.length; k++) {
+        let noteTab = noteTabs[k];
+        
+        //save the note tab's text content
+        localStorage.setItem(noteTab.id + "text", noteTab.textContent);
+    }
+
+    //store the notes
+    const notes = document.getElementsByClassName("note");
+    //for each note we have
+    for (let k = 0; k < notes.length; k++) {
+        let note = notes[k];
+
+        const toDos = note.getElementsByClassName("to-do");
+        
+        //save the number of to-dos in this note
+        localStorage.setItem("note" + (k+1) + "toDos", JSON.stringify(toDos.length));
+        console.log("note" + (k+1) + " has " + toDos.length + " to dos");
+
+        //for each to-do in this note
+        for (let k = 0; k < toDos.length; k++) {
+            const toDo = toDos[k];
+
+            //save the to-do's text content
+            localStorage.setItem(toDo.id + "text", toDo.textContent);
+
+            //save the to-do's id
+            localStorage.setItem(toDo.id + "id", toDo.id);
+            console.log(toDo.id + " : " + toDo.textContent);
+        }
+    }
+
+    //flash the save button green
+    saveButton = document.getElementById("save");
+    saveButton.classList.remove("fadeIn");
+    saveButton.classList.add("fadeOut");
+    
+    function temp(){
+        saveButton.classList.remove("fadeOut");
+        saveButton.classList.add("fadeIn");
+    }
+    
+    setTimeout(temp, 500);
+}
+
+function sync(){
+    console.log("syncing");
+
+    //if i and j have a value
+    if(localStorage.getItem("iValue") >= 0 || localStorage.getItem("jValue") >= 0 ){
+        //get i and j
+        i = localStorage.getItem("iValue");
+        console.log(i);
+        j = localStorage.getItem("jValue");
+        console.log(j);
+    }
+
+    let l = 1;
+
+    //get the noteTabs
+    for (let k = 1; k <= i; k++) {
+        tabTitle = localStorage.getItem("noteTab" + k + "text");
+        tabId = "noteTab" + k;
+        noteTabHTML(tabTitle, tabId);
+        console.log(tabTitle);
+        console.log(tabId);
+        
+        var toDoTitles = new Array();
+        var toDoIds = new Array();
+
+        //get this note's number of to-dos
+        let toDoNum = localStorage.getItem("note" + k + "toDos");
+        console.log("Note" + k + " has " + toDoNum + " to-dos");
+
+        //make the arrays with all the to-dos for the note
+        for (let m = 0; m < toDoNum; m++) {
+            if(l <= j){
+                let toDoTitle = localStorage.getItem("toDo" + l + "text");
+                let toDoId = localStorage.getItem("toDo" + l + "id");
+                toDoTitles[m] = toDoTitle;
+                toDoIds[m] = toDoId;
+                l++;
+            }
+        }
+        noteHTML(tabTitle, "note" + k, toDoTitles, toDoIds);
+        console.log(toDoTitles);
+        console.log(toDoIds);
+    }
+}
+
+function noteTabHTML(tabTitle, id){
+    let num = id.charAt(id.length - 1);
+
+    /*create the new div*/
+    const tabDiv = document.createElement("div");
+
+    /*create the note title div*/
+    const titleDiv = document.createElement("div");
+        const textnode = document.createElement("h1");
+        textnode.textContent = tabTitle;
+        textnode.setAttribute("contenteditable", "true");
+        textnode.setAttribute("oninput", "changeTitle(" + num + ")");
+
+        const openNote = document.createElement("img");
+        openNote.setAttribute("src", "./Images/open.png");
+        openNote.setAttribute("onclick", "openNote(" + num + ")");
+        openNote.classList.add("self-center");
+
+        titleDiv.appendChild(openNote);
+        titleDiv.appendChild(textnode);
+
+        titleDiv.classList.add("flex");
+
+    /*create the trash image and add its classes/attributes*/
+    const trash = document.createElement("img");
+    trash.setAttribute("src", "./Images/trash.png");
+    trash.setAttribute("onclick", "deleteNote(" + num + ")")
+    trash.classList.add("self-center");
+    
+    /*add the title and image*/
+    tabDiv.appendChild(titleDiv);
+    tabDiv.appendChild(trash);
+
+    /*add the note's classes/attributes*/
+    tabDiv.classList.add("noteTab", "flex", "justify-between");
+    tabDiv.classList.add("fadeIn");
+    tabDiv.setAttribute("onmouseover", "makeTabLighter(" + num + ")");
+    tabDiv.setAttribute("onmouseleave", "makeTabLightest(" + num + ")");
+    tabDiv.setAttribute("id", id);
+    
+    /*add the div to the left bar*/
+    document.getElementById("leftBar").appendChild(tabDiv);
+
+    //make sure it's the right theme
+    if(green){
+        greenTheme();
+    }else if (blue){
+        blueTheme();
+    }else{
+        brownTheme();
+    }
+}
+
+function noteHTML(title, id, toDoTitles, toDoIds){
+    let num = id.charAt(id.length - 1);
+
+    /*create the new note div*/
+    const note = document.createElement("div");
+
+    /*create the title div*/
+    const titleDiv = document.createElement("div")
+
+        /*create the note title*/
+        const textnode = document.createElement("h1");
+        textnode.textContent = title;
+        textnode.setAttribute("id", "title" + num);
+
+        /*create the buttons div*/
+        const buttons = document.createElement("div");
+
+        /*add the buttons attributes/classes*/
+        buttons.classList.add("buttons", "flex", "justify-between");
+
+            /*create the add image and add its classes/attributes*/
+            const add = document.createElement("img");
+            add.setAttribute("src", "./Images/add.png");
+            add.setAttribute("onclick", "newToDo(" + j + ")")
+                add.classList.add("self-center");
+
+            /*create the close image and add its classes/attributes*/
+            const close = document.createElement("img");
+            close.setAttribute("src", "./Images/close.png");
+            close.setAttribute("onclick", "closeNote(" + num + ")")
+            close.classList.add("self-center");
+
+            /*add the images to the buttons div*/
+            buttons.appendChild(add);
+            buttons.appendChild(close);
+                    
+        /*add the title and buttons*/
+        titleDiv.appendChild(textnode);
+        titleDiv.appendChild(buttons);
+
+    /*add the title div's attributes/classes*/
+    titleDiv.classList.add("noteTitle", "light", "flex", "justify-between");
+    titleDiv.setAttribute("id", "note" + num + "header");
+
+    /*create the footer*/
+    const footer = document.createElement("div");
+
+        /*create the text for the footer*/
+        const clear = document.createElement("h1");
+        clear.textContent = "Clear all completed";
+        clear.classList.add("self-center");
+
+        /*add the image*/
+        const clearButton = document.createElement("img");
+        clearButton.setAttribute("src", "./Images/clear.png");
+        clearButton.setAttribute("onclick", "clearCompleted(" + num + ")");
+        clearButton.classList.add("self-center");
+
+        /*add the elements to the div*/
+        footer.appendChild(clear);
+        footer.appendChild(clearButton);
+
+        /*add the footer's classes/attributes*/
+        footer.classList.add("footer", "light", "flex", "justify-between");
+
+    /*add the divs to the note*/
+    note.appendChild(titleDiv);
+    note.appendChild(footer);
+        
+    /*add the note's classes/attributes*/
+    note.classList.add("note");
+    note.classList.add("fadeIn");
+    note.setAttribute("id", id);
+    note.setAttribute("onmouseover", "dragElement(note" + num + ")");
+
+    /*add the div to the right area*/
+    document.getElementById("rightArea").appendChild(note);
+
+    //add the note's to-dos
+    for (let k = 0; k < toDoTitles.length; k++) {
+        toDoHTML(toDoTitles[k], toDoIds[k], id);
+    }
+
+    //make sure it's the right theme
+    if(green){
+        greenTheme();
+    }else if (blue){
+        blueTheme();
+    }else{
+        brownTheme();
+    }
+}
+
+function toDoHTML(title, id, note){
+    let num = id.charAt(id.length - 1);
+
+    /*create the new to-do div*/
+    const node = document.createElement("div");
+
+    /*create the first new div: checkbox & title*/
+    const titleDiv = document.createElement("div");
+
+    /*create the checkbox*/
+    const check = document.createElement("input");
+
+    /*add the checkbox's attributes*/
+    check.setAttribute("type", "checkbox");
+    check.classList.add("box" + num);
+        
+    /*create the to-do title*/
+    const textnode = document.createElement("h1");
+    textnode.textContent = title;
+    textnode.setAttribute("contenteditable", "true");
+    textnode.setAttribute("onclick", "this.focus()");
+
+    /*add them to the div*/
+    titleDiv.appendChild(check);
+    titleDiv.appendChild(textnode);
+    titleDiv.classList.add("flex");
+        
+    /*create the trash image and add its classes/attributes*/
+    const trash = document.createElement("img");
+    trash.setAttribute("src", "./Images/trash.png");
+    trash.setAttribute("onclick", "deleteToDo(" + num + ")")
+    trash.classList.add("self-center");
+                
+    /*add the title div & trash*/
+    node.appendChild(titleDiv);
+    node.appendChild(trash);
+        
+    /*add the to-do's classes/attributes*/
+    node.classList.add("to-do", "flex", "justify-between");
+    node.classList.add("fadeIn");
+    node.setAttribute("id", "toDo" + num);
+    node.setAttribute("onmouseover", "makeToDoLighter(" + num + ")");
+    node.setAttribute("onmouseleave", "makeToDoLightest(" + num + ")");
+
+    /*add the div to the note*/
+    document.getElementById(note).appendChild(node);
+
+    //make sure it's the right theme
+    if(green){
+        greenTheme();
+    }else if (blue){
+        blueTheme();
+    }else{
+        brownTheme();
     }
 }

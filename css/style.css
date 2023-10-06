@@ -52,7 +52,7 @@ body {
 
 /* Left Bar*/
 .leftBar {
-  width: 25%;
+  width: 15%;
   height: 100%;
   resize: horizontal;
   overflow: auto;
@@ -98,12 +98,12 @@ body {
 
 /* Right Area */
 .rightArea {
-  width: 75%;
+  width: 100%;
   height: 100%;
 }
 
 .note {
-  width: 20%;
+  width: 15%;
   min-width: 15%;
   max-width: 50%;
   height: 50%;
@@ -125,7 +125,6 @@ body {
   padding-right: 20px;
   padding-left: 20px;
   font-size: 150%;
-  cursor: move;
 }
 .note .noteTitle .buttons {
   width: 25%;
@@ -140,6 +139,7 @@ body {
   padding-right: 20px;
   padding-left: 20px;
   border-bottom: 1px solid #5B7553;
+  cursor: move;
 }
 .note .to-do input {
   margin-right: 5px;

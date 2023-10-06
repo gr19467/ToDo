@@ -14,13 +14,13 @@
     <link rel="stylesheet" href="./css/animations.css">
     <script src="./js/functions.js"></script>
 </head>
-<body>
+<body onload="sync()">
     <!--Nav Bar-->
     <div class="nav flex justify-between dark">
         <h1 class="self-center">List Maker</h1>
         <div class="images flex justify-evenly self-center">
             <img class="self-center" onclick="dropdown()" src="./Images/settings.png" alt="">
-            <img class="self-center" src="./Images/user.png" alt="">
+            <img class="self-center" onclick="save()" id="save" src="./Images/save.png" alt="">
         </div>
     </div>
     <!--Main Area-->
