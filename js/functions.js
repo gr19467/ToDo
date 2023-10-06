@@ -549,7 +549,9 @@ function save(){
 
     //store i and j
     localStorage.setItem("iValue", JSON.stringify(i));
+    console.log("saved i as " + JSON.stringify(i));
     localStorage.setItem("jValue", JSON.stringify(j));
+    console.log("saved j as " + JSON.stringify(j));
 
     //store the noteTabs
     const noteTabs = document.getElementsByClassName("noteTab");
@@ -611,14 +613,12 @@ function sync(){
     console.log("syncing");
     console.log("synced with storage at " + localStorage.length + " items");
 
-    
-
     //if i and j have a value
-    if(localStorage.getItem("iValue") > 0 || localStorage.getItem("jValue") > 0 ){
+    if(localStorage.getItem("iValue") > 0 && localStorage.getItem("jValue") > 0 ){
         //get i and j
         i = parseInt(localStorage.getItem("iValue"));
         console.log("i = " + i);
-        j = localStorage.getItem("jValue");
+        j = parseInt(localStorage.getItem("jValue"));
         console.log("j = " + j);
     }
 
